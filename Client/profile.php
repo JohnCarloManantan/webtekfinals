@@ -6,7 +6,6 @@
 ?>
 <!DOCTYPE html>
 
-
 <html lang="en">
 
 <head>
@@ -14,8 +13,8 @@
     <title>Virtuoso | Profile</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-    <?php
-        include 'includes/header_inc.php';
+<?php
+        include 'includes/header.inc.php';
     ?>
     <main>
         <?php
@@ -33,21 +32,28 @@
             <p class='address'>".$row['address']."</p>
             <p class='birthday'>".$row['birthday']."</p>
         </section>\n
-        <a href='editprof.php'>Edit Profile</a>";
-            
+        <a href='editprofile.php'>Edit Profile</a>";
         
-        function displayImage(){
-            include 'dbh.php';
-            $user = $_SESSION['id'];
-            $sql = "SELECT * FROM customer where custid='$user'";
-            $result = mysqli_query($conn, $sql);
-            while($row = mysqli_fetch_array($result)){
-                echo '<img height="300" width="300" src="data:photo;base64, '.$row['photo'].' "> ';
+            /*Display profile image from base64 encoding*/
+            function displayImage(){
+                include 'dbh.php';
+                $user = $_SESSION['id'];
+                $sql = "SELECT photo FROM customer where custid='$user'";
+                $sql_photo = "SELECT photo FROM customer where custid='$user' and photo is not null";
+                $result = mysqli_query($conn, $sql);
+                $result_photo = mysqli_query($conn, $sql_photo);
+                
+                if(mysqli_num_rows($result_photo)==0){
+                    echo 'No Profile Image';
+                }else{
+                    while($row = mysqli_fetch_array($result)){
+                        echo '<img height="300" width="300" src="data:photo;base64, '.$row['photo'].' "> ';
+                    }
+                }
             }
             mysqli_close($conn);
-        }
         ?>
     </main>
     <?php
-        include 'includes/footer_inc.php';
+        include 'includes/footer.inc.php';
     ?>

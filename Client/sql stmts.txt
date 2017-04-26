@@ -1,0 +1,4 @@
+
+//Tutor and Programs
+$sql = "Select tp.tutorid,tp.programid, program.name program,program.desc,tutor.name tutor,tutorrate,minsession\n"
+                . "FROM tutorprogram tp join tutor on tp.tutorid = tutor.tutorid join program on program.programid = tp.programid"

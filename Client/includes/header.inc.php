@@ -3,8 +3,8 @@
         <h1>Virtuoso</h1>
         <nav>
             <a href="home.php">Home</a>
-            <a href="services.php">Browse</a>
-            <a href="bookings.php">Bookings</a>
+            <a href="browse.php">Browse</a>
+            
         </nav>
         <section class="profile-logout">
             <div class="greeting">
@@ -19,7 +19,7 @@
                 ?>
             </div>
             <div class="logout">
-                <form action="includes/logout_inc.php">
+                <form action="includes/logout.inc.php">
                     <input type="submit" value="Logout">
                 </form>
             </div>

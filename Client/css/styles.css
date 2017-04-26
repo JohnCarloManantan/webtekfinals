@@ -1,12 +1,9 @@
-.profname {
-    text-transform: uppercase;
+p{
+    margin:0;
 }
 
-footer {
-    padding: 80px 0 0 0;
-}
-
-p {
+h4{
     padding: 0;
     margin: 0;
+    text-transform: uppercase;
 }
