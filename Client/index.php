@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if (isset($_SESSION['id'])){
+         header("Location: home.php");
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +34,7 @@
             }
         
             if (strpos($url,'error=login') !== FALSE){
-                echo 'Your username or password is invalid! ';
+                echo 'Your email or password is invalid! ';
             }
         
             if (isset($_SESSION['id'])){

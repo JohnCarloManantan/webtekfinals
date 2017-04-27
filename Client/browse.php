@@ -1,51 +1,44 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['id'])){
-         header("Location: index.php");
-    }
-?>
-<!DOCTYPE html>
+    ob_start();
+    include 'includes/header.inc.php';
+    $buffer=ob_get_contents();
+    ob_end_clean();
 
-<html lang="en">
+    $title = "Virtuoso | Browse";
+    $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
 
-<head>
-    <meta charset="UTF-8">
-    <title>Virtuoso | Browse</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<?php
-        include 'includes/header.inc.php';
+    echo $buffer;
 ?>
     <main>
         <section class="browse-programs">
-           <!-- Continue search functionality-->
             <h2>Programs</h2>
-            <form method="post" action="includes/search.php?go" id="programsearch">
-                <input type="text" name="program" placeholder="Enter program">
-                <input type="submit" name="submit" value="Search">
+            <form method="get" action="search.php" id="programsearch">
+                <input type="text" name="keyword" placeholder="Search program">
+                <input type="submit" name="search" value="Search">
             </form>
             <section class="browse-avail-programs">
-                <?php
-                include 'dbh.php';
-                $sql = "Select * from program";
-                $result = mysqli_query($conn, $sql);
-                if ($result = mysqli_query($conn, $sql)) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $program = $row['name'];
-                        $desc = $row['desc'];
-                        $minsession= $row['minsession'];
-                        echo '<section class="browse-prog-entry">
-                        <h4><a href="">'.$program.'</a></h4>
-                        <p>'.$desc.'</p>
-                        <p>Minimum Sessions: '.$minsession.'</p></section><br>';
-                    }
-                    mysqli_free_result($result);
-                }
-                mysqli_close($conn);
-            ?>
+                <div class="program-container">
+                    <?php
+                        $sql = "Select * from program";
+                        $result = mysqli_query($conn, $sql);
+                        if ($result = mysqli_query($conn, $sql)) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $program = $row['name'];
+                                $desc = $row['desc'];
+                                $minsession= $row['minsession'];
+                                echo "\n".'                    <div class="browse-prog-entry">
+                                <h4><a href="program.php?id='.$row['programid'].'">'.$program.'</a></h4>
+                                <p>'.$desc.'</p>
+                                <p>Minimum Sessions: '.$minsession.'</p>'."\n"."                    </div><br>"."\n";
+                            }
+                            mysqli_free_result($result);
+                        }
+                        mysqli_close($conn);
+                ?>
+                </div>
             </section>
         </section>
     </main>
-    <?php
-        include 'includes/footer.inc.php';
-    ?>
+<?php
+    include 'includes/footer.inc.php';
+?>

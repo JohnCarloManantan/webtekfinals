@@ -1,21 +1,15 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['id'])){
-         header("Location: index.php");
-    }
+    ob_start();
+    include 'includes/header.inc.php';
+    $buffer=ob_get_contents();
+    ob_end_clean();
+
+    $title = "Virtuoso | Profile"; //page title
+    $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+
+    echo $buffer;
 ?>
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Virtuoso | Profile</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<?php
-        include 'includes/header.inc.php';
-    ?>
+   
     <main>
         <?php
             include 'dbh.php';
@@ -25,14 +19,15 @@
             $row = mysqli_fetch_assoc($result);
         
             displayImage();
+        
             echo "<section class='profile'>\n
             <p class='profname'>".$row['name']."</p>
             <p class='email'>".$row['email']."</p>
             <p class='cnumber'>".$row['cnumber']."</p>
             <p class='address'>".$row['address']."</p>
             <p class='birthday'>".$row['birthday']."</p>
-        </section>\n
-        <a href='editprofile.php'>Edit Profile</a>";
+            </section>\n
+            <a href='editprofile.php'>Edit Profile</a>";
         
             /*Display profile image from base64 encoding*/
             function displayImage(){

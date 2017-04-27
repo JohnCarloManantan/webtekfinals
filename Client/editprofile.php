@@ -1,20 +1,13 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['id'])){
-         header("Location: index.php");
-    }
-?>
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Virtuoso | Edit Profile</title>
-</head>
-
-<?php
+    ob_start();
     include 'includes/header.inc.php';
+    $buffer=ob_get_contents();
+    ob_end_clean();
+
+    $title = "Virtuoso | Edit Profile";
+    $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+
+    echo $buffer;
 ?>
     <main>
         <h2>Edit Profile</h2>
