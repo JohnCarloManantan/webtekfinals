@@ -1,0 +1,36 @@
+setTimeout(function(){
+	products.forEach(
+		function display(item,index){
+			console.log("index["+index+"]: "+ item.prodid +","+item.proddesc+","+item.price);
+		})},5000);
+
+
+products.forEach(
+		function display(item,index){
+			console.log("index["+index+"]: "+ item.prodid +","+item.proddesc+","+item.price);
+});
+
+var header = fs.readFileSync('header.html','utf-8');
+var footer = fs.readFileSync('footer.html','utf-8');
+
+fs.writeFileSync('product.html','header.html','utf-8');
+
+loadScript.loadScript(fileName);
+			setTimeout(function(){
+				page = fs.readFileSync(fileName,'utf-8');
+				console.log(page);
+				response.writeHead(200,{"Context-Type": "text/javascript"});
+				response.write(page)},3000);
+
+try{
+			loadScript.loadScript(fileName);
+			setTimeout(function(){
+			page = fs.readFileSync(fileName,'utf-8');
+			console.log(page);
+			response.writeHead(200,{"Context-Type": "text/javascript"});
+			response.write(page);
+			},3000);
+		}catch(err){
+			response.writeHead(404,{"Context-Type":"text/html"});
+			response.write(fs.readFileSync("404.html",'utf-8'));
+		}
