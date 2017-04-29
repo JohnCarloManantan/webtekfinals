@@ -65,6 +65,6 @@
         </section>
     </main>
 
-    <?php
+<?php
     include 'includes/footer.inc.php';
 ?>

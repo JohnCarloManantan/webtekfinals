@@ -14,7 +14,7 @@
     $emails = mysqli_query($conn,$sql_users);
 
     if($row = mysqli_fetch_assoc($emails)){
-        echo "Email already registered";
+        header("Location: ../index.php?error=email");
     }else{
             if(isset($_POST['submit'])){
                 if(getimagesize($_FILES['photo']['tmp_name']) == FALSE){

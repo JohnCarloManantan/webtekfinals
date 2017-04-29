@@ -20,7 +20,6 @@
         <nav>
             <a href="home.php">Home</a>
             <a href="browse.php">Browse</a>
-
         </nav>
         <section class="profile-logout">
             <div class="greeting">

@@ -63,8 +63,14 @@
                 <option value="m">Male</option>
             </select><br>
             <input name="pwd" type="password" placeholder="Password" required><br> Profile Image <input type="file" name="photo"><br>
+            <?php
+                if (strpos($url,'error=email') !== FALSE){
+                    echo 'Your email or password is invalid! ';
+                }
+            ?>
             <input type="submit" value="Sign Up" name="submit" required>
         </form>
+        
     </section>
 </body>
 </html>
