@@ -27,10 +27,10 @@
                                 $program = $row['program'];
                                 $tutor= $row['tutor'];
                                 $currSession= $row['sessionNum'];
-                                echo '<section class="dash-entry">
-                                <h4>'.$program.'</h4>
-                                <p class="dash-tutor">Tutor: '.$tutor.'</p>
-                                <p class="dash-session">You\'ve finished '.$currSession.' sessions </p></section><br>';
+                                echo "<section class='dash-entry'>
+                                <h4>".$program."</h4>
+                                <p class='dash-tutor'>Tutor: <a href='tutor.php?id=" .$row['tutorid']. "'>".$tutor."</a></p>
+                                <p class='dash-session'>You've finished ".$currSession." sessions </p></section><br>";
                         }
                     }else{
                         echo '<h3>You are currently not on any programs.</h3>'; //provide better labels
@@ -52,9 +52,9 @@
                                     $program = $row['program'];
                                     $tutor= $row['tutor'];
                                     $currSession= $row['sessionNum'];
-                                    echo '<section class="dash-entry">
-                                    <h4>'.$program.'</h4>
-                                    <p class="dash-tutor">Tutor: '.$tutor.'</p></section><br>';
+                                    echo "<section class='dash-entry'>
+                                    <h4>".$program."</h4>
+                                    <p class='dash-tutor'>Tutor: <a href='tutor.php?id=" .$row['tutorid']. "'>".$tutor."</a></p></section><br>";
                                 }
                         } 
                         mysqli_free_result($result);
