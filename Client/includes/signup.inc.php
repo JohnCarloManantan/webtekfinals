@@ -14,7 +14,7 @@
     $emails = mysqli_query($conn,$sql_users);
 
     if($row = mysqli_fetch_assoc($emails)){
-        header("Location: ../index.php?error=email");
+        header("Location: ../signuppage.php?error=email");
     }else{
             if(isset($_POST['submit'])){
                 if(getimagesize($_FILES['photo']['tmp_name']) == FALSE){
@@ -27,7 +27,7 @@
                 $sql = "INSERT INTO customer (email,name,address,cnumber,gender,birthday,password,photo) VALUES ('$email','$name','$addr','$phone','$gender','$bday','$pwd','$photo')";
                 $result = mysqli_query($conn,$sql);
             }
-        header("Location: ../index.php");
+        header("Location: ../loginpage.php");
 
     }
     mysqli_close($conn);

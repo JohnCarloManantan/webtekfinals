@@ -9,10 +9,10 @@
     $result = mysqli_query($conn,$sql);
 
     if(!$row = mysqli_fetch_assoc($result)){
-         header("Location: ../index.php?error=login");
+         header("Location: ../loginpage.php?error=login");
     }else{
         if($row['status'] == 'pending'){
-            header("Location: ../index.php?error=unregistered");
+            header("Location: ../loginpage.php?error=unregistered");
         }else{
             $_SESSION['id'] = $row['custid'];
             header("Location: ../home.php");
