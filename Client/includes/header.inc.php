@@ -1,8 +1,18 @@
 <?php
+    $session_lifetime = 3600 * 24 * 2; // 2 days
+    session_set_cookie_params ($session_lifetime);
     session_start();
+
     if (!isset($_SESSION['id'])){
-         header("Location: index.php");
+         header("Location: index.html?error=nosession");
     }
+    
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) { // last request was more than 30 minutes ago
+        session_unset();     
+        session_destroy();   // destroy session data in storage
+        header("Location: errorsession.html");
+    }
+    $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +30,8 @@
         <nav>
             <a href="home.php">Home</a>
             <a href="browse.php">Browse</a>
+            <a href="#">Programs</a>
+            <a href="#">Messages</a>
         </nav>
         <section class="profile-logout">
             <div class="greeting">
