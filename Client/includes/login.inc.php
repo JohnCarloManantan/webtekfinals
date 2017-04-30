@@ -1,4 +1,6 @@
 <?php
+    $session_lifetime = 3600 * 24 * 2; // 2 days
+    session_set_cookie_params ($session_lifetime);
     session_start();
     include '../dbh.php';
 
@@ -9,14 +11,13 @@
     $result = mysqli_query($conn,$sql);
 
     if(!$row = mysqli_fetch_assoc($result)){
-         header("Location: ../loginpage.php?error=login");
+         header("Location: ../login.php?error=login");
     }else{
         if($row['status'] == 'pending'){
-            header("Location: ../loginpage.php?error=unregistered");
+            header("Location: ../login.php?error=unregistered");
         }else{
             $_SESSION['id'] = $row['custid'];
             header("Location: ../home.php");
         }
     }
-
     mysqli_close($conn);

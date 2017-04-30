@@ -37,6 +37,10 @@
             if (strpos($url,'error=login') !== FALSE){
                 echo 'Your email or password is invalid! ';
             }
+            
+            if (strpos($url,'error=nosession') !== FALSE){
+                echo 'You have to login to access the page ';
+            }
         
             if (isset($_SESSION['id'])){
                 echo $_SESSION['id'];
@@ -44,7 +48,7 @@
                 echo 'You are not logged in.';
             }
         ?>
-        
+        <a href="signup.php">Sign up</a>
     </section>
 </body>
 </html>
