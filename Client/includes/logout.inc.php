@@ -3,4 +3,4 @@
     session_unset(); 
     session_destroy();
     mysqli_close($conn);
-    header("Location: ../index.html");
+    header("Location: ../login.php");

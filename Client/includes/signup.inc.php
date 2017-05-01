@@ -18,7 +18,7 @@
     if ($_POST["pwd"] !== $_POST["pwdconfirm"]) {
          header("Location: ../signup.php?error=invalidpass");
     }else{
-         $sql_users = "SELECT email FROM customer WHERE email='$email'";
+        $sql_users = "SELECT email FROM customer WHERE email='$email'";
         $emails = mysqli_query($conn,$sql_users);
 
         if($row = mysqli_fetch_assoc($emails)){

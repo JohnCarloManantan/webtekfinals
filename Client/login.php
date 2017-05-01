@@ -5,7 +5,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,26 +26,21 @@
         </form>
         
         <?php
-        
-            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-        
-            if (strpos($url,'error=unregistered') !== FALSE){
-                echo 'Your registration has not been approved. ';
-            }
-        
-            if (strpos($url,'error=login') !== FALSE){
-                echo 'Your email or password is invalid! ';
-            }
-            
-            if (strpos($url,'error=nosession') !== FALSE){
-                echo 'You have to login to access the page ';
-            }
-        
-            if (isset($_SESSION['id'])){
-                echo $_SESSION['id'];
-            }else{
-                echo 'You are not logged in.';
-            }
+        $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        if (strpos($url, 'error=unregistered') !== FALSE) {
+            echo 'Your registration has not been approved. ';
+        }
+        if (strpos($url, 'error=login') !== FALSE) {
+            echo 'Your email or password is invalid! ';
+        }
+        if (strpos($url, 'error=nosession') !== FALSE) {
+            echo 'You have to login to access the page ';
+        }
+        if (isset($_SESSION['id'])) {
+            echo $_SESSION['id'];
+        } else {
+            echo 'You are not logged in.';
+        }
         ?>
         <a href="signup.php">Sign up</a>
     </section>

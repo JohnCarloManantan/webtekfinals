@@ -1,15 +1,7 @@
 <?php
-ob_start();
-include 'includes/header.inc.php';
-$buffer = ob_get_contents();
-ob_end_clean();
-
+require_once 'includes/functions.php';
 $title = "Virtuoso | Browse";
-$buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
-
-echo $buffer;
-
-
+generateHtmlHeader($title);
 ?>
 <main>
     <section class="browse-programs">
@@ -75,26 +67,11 @@ echo $buffer;
                 <?php
                 if (isset($_GET['filter-prog-button'])) {
                     $filter = $_GET['filter-prog'];
-                    $sql = "SELECT * FROM program order by " . $filter;
+                    $sql    = "SELECT * FROM program order by " . $filter;
                 } else {
                     $sql = "SELECT * FROM program";
-
                 }
-
-                $result = mysqli_query($conn, $sql);
-                if ($result = mysqli_query($conn, $sql)) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $program = $row['name'];
-                        $desc = $row['desc'];
-                        $minsession = $row['minsession'];
-                        echo "\n" . '                    <div class="browse-prog-entry">
-                                <h4><a href="program.php?id=' . $row['programid'] . '">' . $program . '</a></h4>
-                                <p>' . $desc . '</p>
-                                <p>Minimum Sessions: ' . $minsession . '</p>' . "\n" . "                    </div><br>" . "\n";
-                    }
-                    mysqli_free_result($result);
-                }
-
+                generateBrowseProgEntry($sql);
                 ?>
             </div>
         </section>
@@ -117,29 +94,17 @@ echo $buffer;
                             ?>
                         >Z-A
                         </option>
-                        <!--<option value="minsession desc">Most sessions</option>
-                        <option value="minsession asc">Least sessions</option>-->
                     </select>
                     <input type="submit" name="filter-tutor-button" value="Filter">
                 </form>
                 <?php
                 if (isset($_GET['filter-tutor-button'])) {
                     $filter = $_GET['filter-tutor'];
-                    $sql = "SELECT * FROM tutor order by " . $filter;
+                    $sql    = "SELECT * FROM tutor order by " . $filter;
                 } else {
                     $sql = "SELECT * FROM tutor";
                 }
-
-                $result = mysqli_query($conn, $sql);
-                if ($result = mysqli_query($conn, $sql)) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $tutor = $row['name'];
-                        echo "\n" . '                    <div class="browse-prog-entry">
-                                <h4><a href="tutor.php?id=' . $row['tutorid'] . '">' . $tutor . '</a></h4>Insert rating.other info</div><br>';
-                    }
-                    mysqli_free_result($result);
-                }
-                mysqli_close($conn);
+                generateBrowseTutorEntry($sql);
                 ?>
             </div>
         </section>

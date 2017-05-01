@@ -8,9 +8,10 @@
     }
     
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) { // last request was more than 30 minutes ago
-        session_unset();     
+        session_unset();
+        mysqli_close($conn);
         session_destroy();   // destroy session data in storage
-        header("Location: errorsession.html");
+        header("Location: expiredsession.html");
     }
     $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 ?>
@@ -30,8 +31,8 @@
         <nav>
             <a href="home.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href="#">Programs</a>
-            <a href="#">Messages</a>
+            <a href="user_programs.php">Programs</a>
+            <a href="messages.php">Messages</a>
         </nav>
         <section class="profile-logout">
             <div class="greeting">

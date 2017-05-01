@@ -1,18 +1,18 @@
 <?php
-    ob_start();
-    include 'includes/header.inc.php';
-    $buffer=ob_get_contents();
-    ob_end_clean();
-
-    $title = "Virtuoso | Apply";
-    $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
-
-    echo $buffer;
+require_once 'includes/functions.php';
+$title = "Virtuoso | Apply";
+generateHtmlHeader($title);
 ?>
     <main>
         <h2>Program Application</h2>
-        
-        
+        <?php
+        include 'dbh.php';
+        $progid     = $_GET['id'];
+        $sql        = "SELECT * FROM program where programid='$progid'";
+        $result     = mysqli_query($conn, $sql);
+        $row        = mysqli_fetch_assoc($result);
+        generateApplicationForm($progid,$row);
+        ?>   
     </main>
 
 <?php
