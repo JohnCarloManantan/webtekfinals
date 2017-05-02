@@ -29,6 +29,7 @@
 <script type="text/javascript" src="js/wow.js"></script>
 <script type="text/javascript" src="js/classie.js"></script>
 <script src="contactform/contactform.js"></script>
+
 </head>
 <body>
 <header class="header" id="header"><!--header-start-->
@@ -38,9 +39,9 @@
         </figure>
         <h1 class="animated fadeInDown delay-07s">Welcome To Virtuoso</h1>
         <ul class="we-create animated fadeInUp delay-1s">
-        	<li>Where journey starts with U</li>
+        	<li>Play the music | Ehance your skills | Make your own rhythm</li>
         </ul>
-            <a class="link animated fadeInUp delay-1s servicelink" href="#home">Let's Get Started</a>
+            <a class="link animated fadeInUp delay-1s servicelink" href="#home">Let's Bring the Beats in U</a>
     </div>
 </header><!--header-end-->
 
@@ -72,9 +73,9 @@
     </div>
 </nav><!--main-nav-end-->
 
-<!--Modal box-->
+<!--LOG IN / SIGN UP-->
     <div class="modal fade" id="login" role="dialog">
-      <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-sm">
             <div class="form-box">
                 <div class="form-top">
                     <div class="form-top-left">
@@ -86,79 +87,78 @@
                     </div>
                 </div>
                 <div class="form-bottom">
-                    <form role="form" action="" method="post" class="login-form">
+                    <form role="form" action="POST" method="post" class="login-form">
                         <div class="form-group">
-                            <label class="sr-only" for="form-username">Username</label>
+                            <label class="sr-only" for="form-username">Email</label>
                                 <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="form-password">Password</label>
                                 <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                <p>Don't have an account? <a href="#" data-target="#register" data-toggle="modal">Sign Up! </a></p>
                         </div>
-                            <button type="submit" class="btn">Sign in!</button>
+                            <button type="submit" class="btn"><a href="serviceproviders.html">Sign in!</a></button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-      <div class="modal fade" id="register" role="dialog">
-      <div class="modal-dialog modal-sm">
+    <div class="modal fade" id="register" role="dialog">
+        <div class="modal-dialog modal-sm">
             <div class="form-box">
-                                <div class="form-top">
-                                    <div class="form-top-left">
-                                        <h3>Sign up now</h3>
-                                        <p>Fill in the form below to get instant access:</p>
-                                    </div>
-                                    <div class="form-top-right">
-                                        <i class="fa fa-pencil"></i>
-                                    </div>
-                                </div>
-                                <div class="form-bottom">
-                                    <form role="form" action="" method="post" class="registration-form">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-first-name">First name</label>
-                                            <input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control2" id="form-first-name">
-                                            <label class="sr-only" for="form-last-name">Last name</label>
-                                            <input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control2" id="form-last-name">
-                                            <label class="sr-only" for="form-middle-name">Middle name</label>
-                                            <input type="text" name="form-last-name" placeholder="Middle name..." class="form-middle-name form-control2" id="form-middle-name">
-                                        </div>
-                                        <div class="form-group">
-                                            Gender:<br>
-                                            <label class="sr-only" for="form-gender">Gender</label>
-                                            <input type="radio" name="form-gender" value="Male">Male
-                                            <input type="radio" name="form-gender" value="Female">Female 
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-email">Email Address</label>
-                                            <input type="text" name="form-email" placeholder="Email Address..." class="form-email form-control" id="form-email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-address">Address</label>
-                                            <input type="text" name="form-address" placeholder="Address..." class="form-address form-control" id="form-address">
-                                        </div>
-                                        <div class="form-group">
-                                            Birthday:
-                                            <label class="sr-only" for="form-date">Birthday</label>
-                                            <input type="date" name="form-date" placeholder="Birthday..." class="form-date form-control" id="form-date">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-contact-number">Contact Number</label>
-                                            <input type="tel" name="form-contact-number" placeholder="Contact Number..." class="form-contact-number form-control" id="form-contact-number">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-about-yourself">About yourself</label>
-                                            <textarea name="form-about-yourself" placeholder="About yourself..." 
-                                                        class="form-about-yourself form-control" id="form-about-yourself"></textarea>
-                                        </div>
-                                        <button type="submit" class="btn">Sign me up!</button>
-                                    </form>
-                                </div>
-                            </div>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3>Sign up now</h3>
+                        <p>Fill in the form below to get instant access:</p>
+                    </div>
+                    <div class="form-top-right">
+                        <i class="fa fa-pencil"></i>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <form role="form" action="POST" method="post" class="registration-form">
+                        <div class="form-group">
+                            <label class="sr-only" for="form-first-name">First name</label>
+                            <input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control2" id="form-first-name">
+                            <label class="sr-only" for="form-last-name">Last name</label>
+                            <input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control2" id="form-last-name">
+                            <label class="sr-only" for="form-middle-name">Middle name</label>
+                            <input type="text" name="form-last-name" placeholder="Middle name..." class="form-middle-name form-control2" id="form-middle-name">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-email">Email Address</label>
+                            <input type="text" name="form-email" placeholder="Email Address..." class="form-email form-control" id="form-email">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-password">Password</label>
+                            <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-address">Address</label>
+                            <input type="text" name="form-address" placeholder="Address..." class="form-address form-control" id="form-address">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-contact-number">Contact Number</label>
+                            <input type="tel" name="form-contact-number" placeholder="Contact Number..." class="form-contact-number form-control" id="form-contact-number">
+                        </div>
+                        <div class="form-group">
+                            Birthday:
+                            <label class="sr-only" for="form-date">Birthday</label>
+                            <input type="date" name="form-date" placeholder="Birthday..." class="form-date form-control" id="form-date">
+                        </div>
+                        <div class="form-group">
+                            Gender:<br>
+                            <label class="sr-only" for="form-gender">Gender</label>
+                            <input type="radio" name="form-gender" value="Male">Male
+                            <input type="radio" name="form-gender" value="Female">Female 
+                        </div>
+                        <button type="submit" class="btn">Sign me up!</button>
+                    </form>
+                </div>
+            </div>
         </div>
       </div> 
-    <!--/ Modal box-->
+    <!--/ LOG IN / SIGN UP-->
 
 <section class="main-section" id="home"><!--main-section-start-->
 	<div class="container">
@@ -210,61 +210,63 @@
 	</div>
 </section><!--main-section-end-->
 
+
+
 <!-- spacer section -->
-<section class="spacer">
-<div class="container">
-    <h2>TESTIMONIALS</h2>
-    <div class="col-sm-10 col-sm-offset-1 testimonial-list">
-        <div role="tabpanel">
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="tab1">
-                    <div class="span6 alignright flyLeft animated fadeInLeftBig">
-                        <blockquote class="large">
-                            Pak na Pak!!<cite>Chinita the Explorer</cite>
-                        </blockquote>
+<div class="spacer">
+    <div class="container">
+        <h2>TESTIMONIALS</h2>
+        <div class="col-sm-10 col-sm-offset-1 testimonial-list">
+            <div role="tabpanel">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="tab1">
+                        <div class="span6 alignright flyLeft animated fadeInLeftBig">
+                            <blockquote class="large">
+                                Pak na Pak!!<cite>Chinita the Explorer</cite>
+                            </blockquote>
+                        </div>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="tab2">
-                    <div class="span6 alignright flyLeft animated fadeInLeftBig">
-                        <blockquote class="large">
-                            Ang galing! WOW!<cite>Castro, Alissa</cite>
-                        </blockquote>
+                    <div role="tabpanel" class="tab-pane fade" id="tab2">
+                        <div class="span6 alignright flyLeft animated fadeInLeftBig">
+                            <blockquote class="large">
+                                Ang galing! WOW!<cite>Castro, Alissa</cite>
+                            </blockquote>
+                        </div>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="tab3">
-                    <div class="span6 alignright flyLeft animated fadeInLeftBig">
-                        <blockquote class="large">
-                            Superb!!<cite>Chinita.Sasa</cite>
-                        </blockquote>
+                    <div role="tabpanel" class="tab-pane fade" id="tab3">
+                        <div class="span6 alignright flyLeft animated fadeInLeftBig">
+                            <blockquote class="large">
+                                Superb!!<cite>Chinita.Sasa</cite>
+                            </blockquote>
+                        </div>
                     </div>
-                </div>
-                <div role="tabpanel" class="tab-pane fade" id="tab4">
-                    <div class="span6 alignright flyLeft animated fadeInLeftBig">
-                        <blockquote class="large">
-                            NICE!!<cite>Ako Ulit</cite>
-                        </blockquote>
+                    <div role="tabpanel" class="tab-pane fade" id="tab4">
+                        <div class="span6 alignright flyLeft animated fadeInLeftBig">
+                            <blockquote class="large">
+                                NICE!!<cite>Ako Ulit</cite>
+                            </blockquote>
+                        </div>
                     </div>
-                </div>
-            </div><!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab"></a>
-                </li>
-                <li role="presentation">
-                    <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"></a>
-                </li>
-                <li role="presentation">
-                    <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"></a>
-                </li>
-                <li role="presentation">
-                    <a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"></a>
-                </li>
-            </ul>
+                </div><!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab"></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"></a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#tab4" aria-controls="tab4" role="tab" data-toggle="tab"></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-</section>
 <!-- end spacer section -->
 
 <section class="main-section paddind" id="lessons"><!--main-section-start-->
@@ -392,69 +394,90 @@
     </div>
 </section><!--main-section-end-->
 
+<!--
+<section class="main-section client-part" id="client"><!--main-section client-part-start--
+	<div class="container">
+		<b class="quote-right wow fadeInDown delay-03"><i class="fa-quote-right"></i></b>
+    	<div class="row">
+        	<div class="col-lg-12">
+            	<p class="client-part-haead wow fadeInDown delay-05">It was a pleasure to work with the guys at Knight Studio. They made sure 
+we were well fed and drunk all the time!</p>
+            </div>
+        </div>
+    	<ul class="client wow fadeIn delay-05s">
+        	<li><a href="#">
+            	<img src="img/client-pic1.jpg" alt="">
+                <h3>James Bond</h3>
+                <span>License To Drink Inc.</span>
+            </a></li>
+        </ul>
+    </div>
+</section><!--main-section client-part-end-->
+
 <section class="main-section client-part" id="advertise"><!--main-section client-part-start-->
     <div class="container">
     <h2>ADVERTISEMENT</h2>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Carousel indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>   
-    <!-- Wrapper for carousel items -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <ul class="client wow fadeIn">
-                <li><a href="#">
-                    <img src="img/client-pic1.jpg" alt="">
-                    <h3>Jules Marvin Eguilos</h3>
-                    <span>Drum Instructor</span>
-                </a></li>
-            </ul>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="client-part-haead wow fadeInDown">Hey! Come be part of my team!</p>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Carousel indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>   
+            <!-- Wrapper for carousel items -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <ul class="client wow fadeIn">
+                        <li><a href="#">
+                            <img src="img/client-pic1.jpg" alt="">
+                            <h3>Jules Marvin Eguilos</h3>
+                            <span>Drum Instructor</span>
+                        </a></li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="client-part-haead wow fadeInDown">Hey! Come be part of my team!</p>
+                        </div>
+                    </div>   
                 </div>
-            </div>   
-        </div>
-        <div class="item">
-            <ul class="client wow fadeIn">
-                <li><a href="#">
-                    <img src="img/client-pic1.jpg" alt="">
-                    <h3>Jules Marvin Eguilos</h3>
-                    <span>Drum Instructor</span>
-                </a></li>
-            </ul>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="client-part-haead wow fadeInDown">Your future starts with you + my teaching skill.</p>
+                <div class="item">
+                    <ul class="client wow fadeIn">
+                        <li><a href="#">
+                            <img src="img/client-pic1.jpg" alt="">
+                            <h3>Jules Marvin Eguilos</h3>
+                            <span>Drum Instructor</span>
+                        </a></li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="client-part-haead wow fadeInDown">Your future starts with you + my teaching skill.</p>
+                        </div>
+                    </div>   
                 </div>
-            </div>   
-        </div>
-        <div class="item">
-            <ul class="client wow fadeIn">
-                <li><a href="#">
-                    <img src="img/client-pic1.jpg" alt="">
-                    <h3>NAME</h3>
-                    <span>Guitar Instructor</span>
-                </a></li>
-            </ul>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="client-part-haead wow fadeInDown">Less 100 if you have your own Instrument</p>
+                <div class="item">
+                    <ul class="client wow fadeIn">
+                        <li><a href="#">
+                            <img src="img/client-pic1.jpg" alt="">
+                            <h3>NAME</h3>
+                            <span>Guitar Instructor</span>
+                        </a></li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="client-part-haead wow fadeInDown">Less 100 if you have your own Instrument</p>
+                        </div>
+                    </div>   
                 </div>
-            </div>   
+            </div>
+            <!-- Carousel controls -->
+            <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicons-chevron-left"></span>
+            </a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicons-chevron-right"></span>
+            </a>
         </div>
     </div>
-    <!-- Carousel controls -->
-    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicons-chevron-left"></span>
-    </a>
-    <a class="carousel-control right" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicons-chevron-right"></span>
-    </a>
-</div>
     </section><!--main-section client-part-end-->
 
 <section class="main-section team" id="instructors"><!--main-section team-start-->
@@ -514,7 +537,9 @@
         </div>
     </div>
 </section><!--main-section team-end-->
+
 <a href="#" class="scrollup"><i class="fa-angle-up fa-square fa-bgdark fa-2x"></i></a>
+
 <footer class="footer">
     <div class="container">
         <div class="footer-logo"><a href="#"><img src="img/favicon.png" alt=""></a></div>
@@ -530,7 +555,7 @@
     </div>
 </footer>
 
-
+-->
 <script type="text/javascript">
     $(document).ready(function(e) {
         $('#test').scrollToFixed();
@@ -543,8 +568,7 @@
     });
 </script>
 
-
-  <script>
+<script type="text/javascript">
     wow = new WOW(
       {
         animateClass: 'animated',
@@ -552,7 +576,7 @@
       }
     );
     wow.init();
-  </script>
+</script>
 
 
 <script type="text/javascript">
@@ -579,7 +603,6 @@
 </script>
 
 <script type="text/javascript">
-
 $(window).load(function(){
   
   
@@ -624,6 +647,7 @@ $(window).load(function(){
 });
 
 </script>
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
 
@@ -651,13 +675,13 @@ $(window).load(function(){
     /*
         Registration form validation
     */
-    $('.registration-form input[type="text"], .registration-form input[type="tel"], .registration-form input[type="date"], .registration-form input[type="radio"]').on('focus', function() {
+    $('.registration-form input[type="text"], .registration-form input[type="tel"], .registration-form input[type="date"], .registration-form input[type="radio"], .registration-form input[type="password"]').on('focus', function() {
         $(this).removeClass('input-error');
     });
     
     $('.registration-form').on('submit', function(e) {
         
-        $(this).find('input[type="text"], input[type="tel"], input[type="date"], input[type="radio"]').each(function(){
+        $(this).find('input[type="text"], input[type="tel"], input[type="date"], input[type="password"], input[type="radio"]').each(function(){
             if( $(this).val() == "" ) {
                 e.preventDefault();
                 $(this).addClass('input-error');
