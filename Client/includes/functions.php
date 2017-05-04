@@ -21,7 +21,7 @@ function generateCurrentPrograms($session) {
                 $tutor       = $row['tutor'];
                 $currSession = $row['sessionNum'];
                 echo "<section class='dash-entry'>
-                                <h4>" . $program . "</h4>
+                                <h4><a href='programinfo.php?pid=" .$row['programid']. "'>".$program."</a></h4>
                                 <p class='dash-session'>You've finished " . $currSession . " sessions</p>
                                 <p class='dash-tutor'>Tutor: <a href='tutor.php?id=" . $row['tutorid'] . "'>" . $tutor . "</a></p></section><br>";
             }
@@ -42,13 +42,26 @@ function generatePendingPrograms($session) {
                 $tutor       = $row['tutor'];
                 $currSession = $row['sessionNum'];
                 echo "<section class='dash-entry'>
-                                    <h4>" . $program . "</h4>
+                                    <h4><a href='programinfo.php?pid=" .$row['programid']. "'>".$program."</a></h4>
                                     <p class='dash-tutor'>Tutor: <a href='tutor.php?id=" . $row['tutorid'] . "'>" . $tutor . "</a></p></section><br>";
             }
         }
         mysqli_free_result($result);
     }
     mysqli_close($conn);
+}
+
+function generateUserProgramInfo($row1,$row2){
+    echo "<h2>".ucfirst($row1['progname'])."</h2><ul>"
+            ."<li>Description: ".$row1['desc']."</li>"
+            ."<li>Tutor: " .$row1['tutorname']. "</li>"
+            ."<li>Minimum Session: ".$row1['minsession']."</li>"
+            ."<li>Number of Sessions done: " .$row2['sessionNum']. "</li>"
+            ."<li>Date Started: " .$row2['date_start']. "</li>"
+            ."<li>Date Finished: " .$row2['date_fin']. "</li>"
+            ."<li>Status: " .$row2['status']. "</li>"
+            ."<li>Total payments made: " .$row2['totalpaymentmade']. "</li>"
+            ."</ul>";         
 }
 /*Display profile image from base64 encoding*/
 function displayImage() {

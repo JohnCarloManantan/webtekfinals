@@ -15,7 +15,7 @@ generateHtmlHeader($title);
             </section>
             <section class="dash-pending">
                 <?php
-                    generatePendingPrograms($session);
+                generatePendingPrograms($session);
                 ?>
             </section>
         </section>

@@ -1,30 +1,33 @@
 <?php
+ob_start();
+include 'includes/header.inc.php';
 require_once 'includes/functions.php';
-include 'dbh.php';
-$title = "Virtuoso | Browse";
+$buffer=ob_get_contents();
+ob_end_clean();
 
-if (isset($_GET['id'])) {
+if(isset($_GET['id'])){
     $_SESSION['progid'] = $_GET['id'];
-    $progID             = $_SESSION['progid'];
-} else {
+    $progID = $_SESSION['progid'];
+}else{
     $progID = $_SESSION['progid'];
 }
-$sql    = "Select * FROM program where programid='$progID'";
-$result = mysqli_query($conn, $sql);
-$row    = mysqli_fetch_assoc($result);
-$title  = "Virtuoso | " . ucfirst($row['name']);
 
-generateHtmlHeader($title);
+$sql = "Select * FROM program where programid='$progID'";
+$result = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($result);
+
+$title = "Virtuoso | ".ucfirst($row['name']);
+$buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+
+echo $buffer;
 ?>
     <main>
         <?php
-        echo "<h2>".ucfirst($row['name'])."</h2>
-        <p>".$row['desc']."</p>
-        <p>Minimum Session: ".$row['minsession']."</p>\n";
-        
-        echo "<a href='apply.php?id=".$progID."'>Apply</a>";
-        ?>
-    
+    echo "<h2>".ucfirst($row['name'])."</h2>
+    <p>".$row['desc']."</p>
+    <p>Minimum Session: ".$row['minsession']."</p>\n
+    <a href='apply.php?id=".$row['programid']."'>Apply</a>";
+    ?>
             <h3>Tutors</h3>
             <form name="filter-prog-tutor" action="program.php">
                 <select name="filter-tutor-select">
@@ -55,21 +58,28 @@ generateHtmlHeader($title);
                </select>
                 <input type="submit" value="Filter" name="filter-tutor-submit">
             </form>
-<?php
+            <?php
+            
 
-if (isset($_GET['filter-tutor-submit'])) {
-    $filter = $_GET['filter-tutor-select'];
-    $sql_tp = "Select tp.tutorid,tp.programid,t.name tutor,p.name program,tutorrate\n" . "FROM tutorprogram tp join tutor t on tp.tutorid = t.tutorid join program p on tp.programid = p.programid\n" . "WHERE tp.programid ='$progID' order by $filter";
-} else {
-    $sql_tp = "Select tp.tutorid,tp.programid,t.name tutor,p.name program,tutorrate\n" . "FROM tutorprogram tp join tutor t on tp.tutorid = t.tutorid join program p on tp.programid = p.programid\n" . "WHERE tp.programid ='$progID'";
-}
-        
-$result_tp   = mysqli_query($conn, $sql_tp);
-$queryResult = mysqli_num_rows($result_tp);
-        
-generateTutorTable($result_tp,$queryResult);
-        
-?>
+        if (isset($_GET['filter-tutor-submit'])){
+            $filter=$_GET['filter-tutor-select'];
+            $sql_tp = "Select tp.tutorid,tp.programid,t.name tutor,p.name program,tutorrate\n"
+        . "FROM tutorprogram tp join tutor t on tp.tutorid = t.tutorid join program p on tp.programid = p.programid\n"
+        . "WHERE tp.programid ='$progID' order by $filter";
+        }else{
+           $sql_tp = "Select tp.tutorid,tp.programid,t.name tutor,p.name program,tutorrate\n"
+        . "FROM tutorprogram tp join tutor t on tp.tutorid = t.tutorid join program p on tp.programid = p.programid\n"
+        . "WHERE tp.programid ='$progID'";
+
+        }
+
+
+        $result_tp = mysqli_query($conn,$sql_tp);
+        $queryResult = mysqli_num_rows($result_tp);
+
+
+       generateTutorTable($result_tp, $queryResult)
+        ?>
     </main>
     <?php
 include 'includes/footer.inc.php';
