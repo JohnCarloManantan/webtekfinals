@@ -1,7 +1,8 @@
 <?php
-require_once 'includes/functions.php';
-$title = "Virtuoso | Search";
-generateHtmlHeader($title);
+    require_once 'includes/functions.php';
+    $title = "Virtuoso | Search";
+
+    generateHtmlHeader($title);
 ?>
     <main>
         <section class="browse-programs">
@@ -15,12 +16,12 @@ if (isset($_GET['filter-browse']) && $_GET['filter-browse'] == 'all')
 ?>
                       >All
                       </option>
-                    <option value="program" 
+                    <option value="service" 
                         <?php
-if (isset($_GET['filter-browse']) && $_GET['filter-browse'] == 'program')
+if (isset($_GET['filter-browse']) && $_GET['filter-browse'] == 'service')
     echo ' selected="selected"';
 ?>
-                      >Program
+                      >Service
                       </option>
                  <option value="tutor" 
                         <?php
@@ -33,19 +34,19 @@ if (isset($_GET['filter-browse']) && $_GET['filter-browse'] == 'tutor')
                 <input type="text" name="keyword" placeholder="Search">
                 <input type="submit" name="search" value="Search">
             </form>
-<?php
-if (isset($_GET['filter-browse'])) {
-    if ($_GET['filter-browse'] == 'program') {
-        searchProgram();
-    } else if ($_GET['filter-browse'] == 'tutor') {
-        searchTutor();
-    } else {
-        searchProgTutor();
-    }
-}
-?>
+            <?php
+            if (isset($_GET['filter-browse'])) {
+                if ($_GET['filter-browse'] == 'service') {
+                    searchService();
+                } else if ($_GET['filter-browse'] == 'tutor') {
+                    searchTutor();
+                } else {
+                    searchServiceTutor();
+                }
+            }
+            ?>
         </section>
     </main>
 <?php
-include 'includes/footer.inc.php';
+    include 'includes/footer.inc.php';
 ?>

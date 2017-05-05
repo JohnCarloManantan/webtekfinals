@@ -6,13 +6,13 @@ $buffer=ob_get_contents();
 ob_end_clean();
 
 if(isset($_GET['id'])){
-    $_SESSION['progid'] = $_GET['id'];
-    $progID = $_SESSION['progid'];
+    $_SESSION['serviceid'] = $_GET['id'];
+    $serviceid = $_SESSION['serviceid'];
 }else{
-    $progID = $_SESSION['progid'];
+    $serviceid = $_SESSION['serviceid'];
 }
 
-$sql = "Select * FROM program where programid='$progID'";
+$sql = "Select * FROM service where serviceid=$serviceid";
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -23,13 +23,19 @@ echo $buffer;
 ?>
     <main>
         <?php
-    echo "<h2>".ucfirst($row['name'])."</h2>
-    <p>".$row['desc']."</p>
-    <p>Minimum Session: ".$row['minsession']."</p>\n
-    <a href='apply.php?id=".$row['programid']."'>Apply</a>";
-    ?>
+        
+            $servicename = ucfirst($row['name']);
+            $desc = $row['desc'];
+        
+echo <<<FRAG
+<h2>$servicename</h2>
+<p>$desc</p>
+<a href="book.php?id=$serviceid">Book</a>
+FRAG;
+        
+        ?>
             <h3>Tutors</h3>
-            <form name="filter-prog-tutor" action="program.php">
+            <form name="filter-prog-tutor" action="service.php">
                 <select name="filter-tutor-select">
                     <option value="tutor asc" 
                         <?php if(isset($_GET['filter-tutor-select']) && $_GET['filter-tutor-select'] == 'tutor asc') 
@@ -59,28 +65,25 @@ echo $buffer;
                 <input type="submit" value="Filter" name="filter-tutor-submit">
             </form>
             <?php
-            
+        
+                if (isset($_GET['filter-tutor-submit'])){
+                    $filter=$_GET['filter-tutor-select'];
+                    $sql_tp = "SELECT ts.tutorid,ts.serviceid,t.name tutor,s.name service,tutorrate
+                               FROM tutorservice ts join tutor t on ts.tutorid = t.tutorid join service s on ts.serviceid = s.serviceid
+                               WHERE ts.serviceid=$serviceid order by $filter";
+                }else{
+                   $sql_tp = "SELECT ts.tutorid,ts.serviceid,t.name tutor,s.name service,tutorrate
+                              FROM tutorservice ts join tutor t on ts.tutorid = t.tutorid join service s on ts.serviceid = s.serviceid
+                              WHERE ts.serviceid=$serviceid";
 
-        if (isset($_GET['filter-tutor-submit'])){
-            $filter=$_GET['filter-tutor-select'];
-            $sql_tp = "Select tp.tutorid,tp.programid,t.name tutor,p.name program,tutorrate\n"
-        . "FROM tutorprogram tp join tutor t on tp.tutorid = t.tutorid join program p on tp.programid = p.programid\n"
-        . "WHERE tp.programid ='$progID' order by $filter";
-        }else{
-           $sql_tp = "Select tp.tutorid,tp.programid,t.name tutor,p.name program,tutorrate\n"
-        . "FROM tutorprogram tp join tutor t on tp.tutorid = t.tutorid join program p on tp.programid = p.programid\n"
-        . "WHERE tp.programid ='$progID'";
+                }
 
-        }
+                $result_tp = mysqli_query($conn,$sql_tp);
+                $queryResult = mysqli_num_rows($result_tp);
 
-
-        $result_tp = mysqli_query($conn,$sql_tp);
-        $queryResult = mysqli_num_rows($result_tp);
-
-
-       generateTutorTable($result_tp, $queryResult)
+                generateTutorTable($result_tp, $queryResult)
         ?>
     </main>
     <?php
-include 'includes/footer.inc.php';
-?>
+        include 'includes/footer.inc.php';
+    ?>

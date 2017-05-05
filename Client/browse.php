@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/functions.php';
-$title = "Virtuoso | Browse";
-generateHtmlHeader($title);
+    require_once 'includes/functions.php';
+    $title = "Virtuoso | Browse";
+    generateHtmlHeader($title);
 ?>
 <main>
     <section class="browse-programs">
@@ -14,11 +14,11 @@ generateHtmlHeader($title);
                     ?>
                 >All
                 </option>
-                <option value="program"
+                <option value="service"
                     <?php if (isset($_GET['filter-browse']) && $_GET['filter-browse'] == 'program')
                         echo ' selected="selected"';
                     ?>
-                >Program
+                >Service
                 </option>
                 <option value="tutor"
                     <?php if (isset($_GET['filter-browse']) && $_GET['filter-browse'] == 'tutor')
@@ -31,10 +31,10 @@ generateHtmlHeader($title);
             <input type="submit" name="search" value="Search">
         </form>
 
-        <section id="browse-prog" class="browse-avail-programs">
-            <div class="program-container">
-                <h3>Programs</h3>
-                <form method="get" action="browse.php#browse-prog" id="programfilter">
+        <section>
+            <div>
+                <h3>Services</h3>
+                <form method="get" action="browse.php#browse-prog">
                     <select name="filter-prog">
                         <option value="name asc"
                             <?php if (isset($_GET['filter-prog']) && $_GET['filter-prog'] == 'name asc')
@@ -48,40 +48,29 @@ generateHtmlHeader($title);
                             ?>
                         >Z-A
                         </option>
-                        <option value="minsession desc"
-                            <?php if (isset($_GET['filter-prog']) && $_GET['filter-prog'] == 'minsession desc')
-                                echo ' selected="selected"';
-                            ?>
-                        >Most sessions
-                        </option>
-                        <option value="minsession asc"
-                            <?php if (isset($_GET['filter-prog']) && $_GET['filter-prog'] == 'minsession asc')
-                                echo ' selected="selected"';
-                            ?>
-                        >Most sessions
-                        </option>
-
                     </select>
                     <input type="submit" name="filter-prog-button" value="Filter">
                 </form>
                 <?php
-                if (isset($_GET['filter-prog-button'])) {
-                    $filter = $_GET['filter-prog'];
-                    $sql    = "SELECT * FROM program order by " . $filter;
-                } else {
-                    $sql = "SELECT * FROM program";
-                }
-                generateBrowseProgEntry($sql);
+                
+                    if (isset($_GET['filter-prog-button'])) {
+                        $filter = $_GET['filter-prog'];
+                        $sql    = "SELECT * FROM service order by " . $filter;
+                    } else {
+                        $sql = "SELECT * FROM service";
+                    }
+
+                    generateBrowseServiceEntry($sql);
+                
                 ?>
             </div>
         </section>
 
-        <section id="browse-tutor" class="browse-avail-tutor">
-            <div class="tutor-container">
+        <section>
+            <div>
                 <h3>Tutors</h3>
                 <form method="get" action="browse.php#browse-tutor" id="tutorfilter">
                     <select name="filter-tutor">
-
                         <option value="name asc"
                             <?php if (isset($_GET['filter-tutor']) && $_GET['filter-tutor'] == 'name asc')
                                 echo ' selected="selected"';
@@ -98,18 +87,20 @@ generateHtmlHeader($title);
                     <input type="submit" name="filter-tutor-button" value="Filter">
                 </form>
                 <?php
-                if (isset($_GET['filter-tutor-button'])) {
-                    $filter = $_GET['filter-tutor'];
-                    $sql    = "SELECT * FROM tutor order by " . $filter;
-                } else {
-                    $sql = "SELECT * FROM tutor";
-                }
-                generateBrowseTutorEntry($sql);
+                
+                    if (isset($_GET['filter-tutor-button'])) {
+                        $filter = $_GET['filter-tutor'];
+                        $sql    = "SELECT * FROM tutor order by " . $filter;
+                    } else {
+                        $sql = "SELECT * FROM tutor";
+                    }
+                
+                    generateBrowseTutorEntry($sql);
                 ?>
             </div>
         </section>
     </section>
 </main>
 <?php
-include 'includes/footer.inc.php';
+    include 'includes/footer.inc.php';
 ?>

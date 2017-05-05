@@ -1,6 +1,7 @@
 <?php
     session_start();
-    session_unset(); 
-    session_destroy();
+    session_unset();
     mysqli_close($conn);
-    header("Location: ../login.php");
+    session_destroy();
+    
+    header("Location: ../index.php");

@@ -4,7 +4,7 @@
     session_start();
 
     if (!isset($_SESSION['id'])){
-         header("Location: index.html?error=nosession");
+         header("Location: index.php?error=nosession");
     }
     
     if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) { // last request was more than 30 minutes ago
@@ -31,11 +31,11 @@
         <nav>
             <a href="home.php">Home</a>
             <a href="browse.php">Browse</a>
-            <a href="user_programs.php">Programs</a>
+            <a href="userbookings.php">Bookings</a>
             <a href="messages.php">Messages</a>
         </nav>
-        <section class="profile-logout">
-            <div class="greeting">
+        <section>
+            <div>
                 <?php
                     include 'dbh.php';
                     $session =  $_SESSION['id'];
@@ -46,7 +46,7 @@
                     echo "<a href='profile.php' class='welcome'> ".$row['name']. "</a>\n";
                 ?>
             </div>
-            <div class="logout">
+            <div>
                 <form action="includes/logout.inc.php">
                     <input type="submit" value="Logout">
                 </form>
