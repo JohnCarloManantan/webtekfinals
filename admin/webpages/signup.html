@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Virtuoso</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <h1>Virtuoso</h1>
+        <section id=customersign-up>
+            <h2>Sign-up as Customer</h2>
+            <form action="/virtuoso/customerregistration" method="POST">
+                <input type="hidden" name="size" value="10000000000"><br/>
+                <input name="name" type="text" placeholder="Name" required><br/>
+                <input name="email" type="email" placeholder="Email Address" required><br/>
+                <input name="address" type="text" placeholder="Home Address" required><br/>
+                <input name=phone type=tel placeholder="Phone (xxxx-xxx-xxxx)" required><br/>
+                <input name="birthday" type=date><br/>
+                <select name="gender" required>
+                    <option selected value="none">Gender</option>
+                    <option value="f">Female</option>
+                    <option value="m">Male</option>
+                </select><br/>
+                <input name="pwd" type="password" placeholder="Password" required><br/>
+                <input name="pwdconfirm" type="password" placeholder="Re-enter Password" required><br/>
+                <input type="submit" value="Sign Up" name=submit required>
+            </form>
+
+        <section id=tutorsign-up>
+            <h2>Sign-up as Tutor</h2>
+            <form action="/virtuoso/tutorregistration" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="size" value="10000000000"><br/>
+                <input name="name" type="text" placeholder="Name" required><br/>
+                <input name="email" type="email" placeholder="Email Address" required><br/>
+                <input name="address" type="text" placeholder="Home Address" required><br/>
+                <input name="birthday" type=date><br/>
+                <select name="gender" required>
+                    <option selected value="none">Gender</option>
+                    <option value="f">Female</option>
+                    <option value="m">Male</option>
+                </select><br/>
+                <input name="pwd" type="password" placeholder="Password" required><br/>
+                <input name="pwdconfirm" type="password" placeholder="Re-enter Password" required><br/>
+                <input type="submit" value="Sign Up" name=submit required>
+            </form>
+</html>
